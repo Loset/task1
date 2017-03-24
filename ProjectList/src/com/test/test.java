@@ -13,6 +13,7 @@ public class test {
             array.add(i);
         }
         for (Object o : array) {
+//            System.out.println(array.size());
             System.out.println(o);
         }
 

@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 
 public class ArrayList implements List {
     public class ArrayListIterator implements java.util.ListIterator {
-        int cursor;
+        int cursor = 0;
 
         @Override
         public boolean hasNext() {
@@ -80,7 +80,7 @@ public class ArrayList implements List {
         if (size == array.length) {
             enhanceArray();
         }
-        array[size + 1] = item;
+        array[size] = item;
         size++;
     }
 
