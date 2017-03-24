@@ -9,10 +9,12 @@ import com.list.ArrayList;
 public class test {
     public static void main(String[] args) {
         ArrayList array = new ArrayList();
+        for (int i = 0; i < 3; i++) {
+            array.add(i);
+        }
         for (Object o : array) {
-
+            System.out.println(o);
         }
 
-        array.iterator();
     }
 }

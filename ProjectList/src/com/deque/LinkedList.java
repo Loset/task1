@@ -139,17 +139,21 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public void removeFirst() {//nullPointerE
-        first = first.getNext();
-        first.setPrev(null);
-        size--;
+    public void removeFirst() {
+        if (!isEmpty()) {
+            first = first.getNext();
+            first.setPrev(null);
+            size--;
+        }
     }
 
     @Override
-    public void removeLast() {//nullPointerE
-        last = last.getPrev();
-        last.setNext(null);
-        size--;
+    public void removeLast() {
+        if (!isEmpty()) {
+            last = last.getPrev();
+            last.setNext(null);
+            size--;
+        }
     }
 
     @Override
