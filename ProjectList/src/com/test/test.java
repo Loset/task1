@@ -1,6 +1,7 @@
 package com.test;
 
 
+import com.deque.LinkedList;
 import com.list.ArrayList;
 
 /**
@@ -8,12 +9,11 @@ import com.list.ArrayList;
  */
 public class test {
     public static void main(String[] args) {
-        ArrayList array = new ArrayList();
+        LinkedList linkedList = new LinkedList();
         for (int i = 0; i < 3; i++) {
-            array.add(i);
+            linkedList.add(i);
         }
-        for (Object o : array) {
-//            System.out.println(array.size());
+        for (Object o : linkedList) {
             System.out.println(o);
         }
 

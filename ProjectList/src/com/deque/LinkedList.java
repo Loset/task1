@@ -243,7 +243,7 @@ public class LinkedList implements List, Deque {
             throw new IndexOutOfBoundsException();
         }
         Node node = first;
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i <= index; i++) {
             if (i == index) {
                 return node.getData();
             }
