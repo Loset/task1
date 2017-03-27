@@ -169,14 +169,14 @@ public class ArrayList implements List {
 
     @Override
     public List subList(int from, int to) {
-        if (isIndex(from) && isIndex(from)) {
-            Object[] newArray = new Object[size];
+        if (isIndex(from) && ((isIndex(to)) {
+            Object[] newArray = new Object[to - from];
             for (int i = from; i < to; i++) {
-                newArray[i] = array[i];
+                newArray[i - from] = array[i];
             }
             return new ArrayList(newArray, newArray.length);
         }
-        return null;
+        throw new IndexOutOfBoundsException();
     }
 
     @Override
