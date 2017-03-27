@@ -169,7 +169,7 @@ public class ArrayList implements List {
 
     @Override
     public List subList(int from, int to) {
-        if (isIndex(from) && ((isIndex(to)) {
+        if (isIndex(from) && (isIndex(to))) {
             Object[] newArray = new Object[to - from];
             for (int i = from; i < to; i++) {
                 newArray[i - from] = array[i];
