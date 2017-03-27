@@ -12,14 +12,10 @@ public class test {
         for (int i = 0; i < 3; i++) {
             arrayList.add(i);
         }
-        List arrayL = new ArrayList();
-        arrayL = arrayList.subList(0, 2);
         for (Object o : arrayList) {
             System.out.println(o);
         }
         System.out.println();
-        for (Object o : arrayL) {
-            System.out.println(o);
-        }
+        System.out.println();
     }
 }
