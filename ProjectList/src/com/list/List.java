@@ -2,7 +2,7 @@ package com.list;
 
 import com.collection.Collection;
 
-public interface List extends Collection{
+public interface List extends Collection {
     void add(Object item);
 
     void add(int index, Object item);
