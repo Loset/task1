@@ -1,17 +1,16 @@
 package com.ui;
 
-import com.list.List;
-
+import java.util.Collection;
 import java.util.Scanner;
 
 /**
  * Created by student7 on 29.03.2017.
  */
 public class SimpleUserInterface implements UserInterface {
-    private List list;
+    private Collection collection;
 
-    public void setList(List list) {
-        this.list = list;
+    public SimpleUserInterface(Collection collection) {
+        this.collection = collection;
     }
 
     public void printMenu() {
@@ -24,17 +23,17 @@ public class SimpleUserInterface implements UserInterface {
 
     @Override
     public void add(Object item) {
-        list.add(item);
+        collection.add(item);
     }
 
     @Override
     public void delete(int index) {
-        list.remove(index);
+        collection.remove(index);
     }
 
     @Override
     public void find(Object item) {
-        if (list.indexOf(item) != -1) {
+        if (collection.contains(item)) {
             System.out.println("Содержится");
         } else {
             System.out.println("Не содержится");
@@ -43,7 +42,7 @@ public class SimpleUserInterface implements UserInterface {
 
     @Override
     public void print() {
-        for (Object o : list) {
+        for (Object o : collection) {
             System.out.println(o);
         }
     }
