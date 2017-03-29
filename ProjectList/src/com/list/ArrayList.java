@@ -123,8 +123,8 @@ public class ArrayList implements List {
         if (size == array.length) {
             enhanceArray();
         }
-        for (int i = index; i < size; ++i) {
-            array[i + 1] = array[i];
+        for (int i = size - 1; i > index; --i) {
+            array[i] = array[i - 1];
         }
         array[index] = item;
         ++size;

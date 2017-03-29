@@ -222,17 +222,22 @@ public class LinkedList implements List, Deque {
         if (!isIndex(index)) {
             throw new IndexOutOfBoundsException();
         }
-        Node node = first;
-        Node newObj = new Node();
-        newObj.setData(item);
-        for (int i = 0; node.getNext() != null; i++) {
-            if (index == i) {
-                newObj.setNext(node);
+        if (index == size) {
+            add(item);
+            return;
+        }
+
+        int i = 0;
+        Node newNode = new Node();
+        newNode.setData(item);
+        for (Node node = first; null != node.getNext(); node = node.getNext()) {
+            if (index == i++) {
+                newNode.setNext(node);
                 Node prev = node.getPrev();
-                newObj.setPrev(prev);
-                node.setPrev(newObj);
-                prev.setNext(newObj);
-                break;
+                newNode.setPrev(prev);
+                node.setPrev(newNode);
+                prev.setNext(newNode);
+                return;
             }
         }
     }
@@ -332,6 +337,6 @@ public class LinkedList implements List, Deque {
     }
 
     private boolean isIndex(int index) {
-        return (index >= 0) && (index < size);
+        return (index >= 0) && (index <= size);
     }
 }
