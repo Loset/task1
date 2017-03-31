@@ -5,8 +5,8 @@ import com.list.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedList implements List, Deque {
-    public class LinkedListIterator implements java.util.ListIterator {
+public class LinkedList<T> implements List<T>, Deque<T> {
+    public class LinkedListIterator implements java.util.ListIterator<T> {
         int cursor;
 
         @Override
@@ -15,10 +15,10 @@ public class LinkedList implements List, Deque {
         }
 
         @Override
-        public Object next() {
+        public T next() {
             if (cursor >= size)
                 throw new NoSuchElementException();
-            return get(cursor++);
+            return (T) get(cursor++);
         }
 
         @Override
@@ -27,10 +27,10 @@ public class LinkedList implements List, Deque {
         }
 
         @Override
-        public Object previous() {
+        public T previous() {
             if (!hasPrevious())
                 throw new NoSuchElementException();
-            return get(--cursor);
+            return (T) get(--cursor);
         }
 
         @Override
@@ -49,12 +49,12 @@ public class LinkedList implements List, Deque {
         }
 
         @Override
-        public void set(Object o) {
+        public void set(T o) {
             replace(cursor, o);
         }
 
         @Override
-        public void add(Object o) {
+        public void add(T o) {
             LinkedList.this.add(cursor++, o);
         }
     }
@@ -109,7 +109,7 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public void addFirst(Object item) {
+    public void addFirst(T item) {
         Node node = new Node();
         node.setData(item);
         if (first == null) {
@@ -124,7 +124,7 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public void addLast(Object item) {
+    public void addLast(T item) {
         Node node = new Node();
         node.setData(item);
         if (last == null) {
@@ -157,39 +157,39 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public Object getFirst() {
+    public T getFirst() {
         if (first == null)
             throw new NoSuchElementException();
-        return first.getData();
+        return (T) first.getData();
     }
 
     @Override
-    public Object getLast() {
+    public T getLast() {
         if (last == null)
             throw new NoSuchElementException();
-        return last.getData();
+        return (T) last.getData();
     }
 
     @Override
-    public Object pollFirst() {
+    public T pollFirst() {
         if (first == null)
             throw new NoSuchElementException();
         Node node = first;
         removeFirst();
-        return node.getData();
+        return (T) node.getData();
     }
 
     @Override
-    public Object pollLast() {
+    public T pollLast() {
         if (last == null)
             throw new NoSuchElementException();
         Node node = last;
         removeLast();
-        return node.getData();
+        return (T) node.getData();
     }
 
     @Override
-    public void add(Object item) {
+    public void add(T item) {
         addLast(item);
     }
 
@@ -206,7 +206,7 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public boolean remove(Object obj) {
+    public boolean remove(T obj) {
         int i = 0;
         for (Node node = first; null != node.getNext(); ++i) {
             if (node.equals(obj)) {
@@ -218,7 +218,7 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public void add(int index, Object item) {
+    public void add(int index, T item) {
         if (!isIndex(index)) {
             throw new IndexOutOfBoundsException();
         }
@@ -243,14 +243,14 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public Object get(int index) {
+    public T get(int index) {
         if (!isIndex(index)) {
             throw new IndexOutOfBoundsException();
         }
         Node node = first;
         for (int i = 0; i <= index; i++) {
             if (i == index) {
-                return node.getData();
+                return (T) node.getData();
             }
             node = node.getNext();
         }
@@ -258,7 +258,7 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public int indexOf(Object obj) {
+    public int indexOf(T obj) {
         int i = 0;
         for (Node node = first; null != node.getNext(); ++i) {
             if (node.equals(obj)) {
@@ -269,7 +269,7 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public int lastIndexOf(Object obj) {
+    public int lastIndexOf(T obj) {
         Node node = last;
         for (int i = size - 1; node.getPrev() != null; i--) {
             if (node.equals(obj)) {
@@ -281,7 +281,7 @@ public class LinkedList implements List, Deque {
     }
 
     @Override
-    public void replace(int index, Object item) {
+    public void replace(int index, T item) {
         if ((index >= 0) && (index < size)) {
             Node obj = first;
             for (int i = 0; obj.getNext() != null; i++) {

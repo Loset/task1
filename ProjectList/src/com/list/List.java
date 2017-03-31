@@ -2,18 +2,18 @@ package com.list;
 
 import com.collection.Collection;
 
-public interface List extends Collection {
-    void add(Object item);
+public interface List<T> extends Collection<T> {
+    void add(T item);
 
-    void add(int index, Object item);
+    void add(int index, T item);
 
-    Object get(int index);
+    T get(int index);
 
-    int indexOf(Object obj);
+    int indexOf(T obj);
 
-    int lastIndexOf(Object obj);
+    int lastIndexOf(T obj);
 
-    void replace(int index, Object item);
+    void replace(int index, T item);
 
     List subList(int from, int to);
 

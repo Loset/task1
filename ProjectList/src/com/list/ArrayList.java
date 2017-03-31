@@ -3,8 +3,8 @@ package com.list;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ArrayList implements List {
-    public class ArrayListIterator implements java.util.ListIterator {
+public class ArrayList<T> implements List<T> {
+    public class ArrayListIterator implements java.util.ListIterator<T> {
         int cursor = 0;
 
         @Override
@@ -13,10 +13,10 @@ public class ArrayList implements List {
         }
 
         @Override
-        public Object next() {
+        public T next() {
             if (cursor >= size)
                 throw new NoSuchElementException();
-            return array[cursor++];
+            return (T) array[cursor++];
         }
 
         @Override
@@ -25,10 +25,10 @@ public class ArrayList implements List {
         }
 
         @Override
-        public Object previous() {
+        public T previous() {
             if (!hasPrevious())
                 throw new NoSuchElementException();
-            return array[--cursor];
+            return (T) array[--cursor];
         }
 
         @Override
@@ -47,12 +47,12 @@ public class ArrayList implements List {
         }
 
         @Override
-        public void set(Object o) {
+        public void set(T o) {
             replace(cursor, o);
         }
 
         @Override
-        public void add(Object o) {
+        public void add(T o) {
             ArrayList.this.add(cursor++, o);
         }
     }
@@ -62,7 +62,7 @@ public class ArrayList implements List {
     private int size = 0;
     private Object[] array;
 
-    private ArrayList(Object[] array, int size) {
+    private ArrayList(T[] array, int size) {
         this.size = size;
         this.array = array;
     }
@@ -72,11 +72,11 @@ public class ArrayList implements List {
     }
 
     public ArrayList(int capacity) {
-        this.array = new Object[capacity];
+        array = new Object[capacity];
     }
 
     @Override
-    public void add(Object item) {
+    public void add(T item) {
         if (size == array.length) {
             enhanceArray();
         }
@@ -96,7 +96,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public boolean remove(Object obj) {
+    public boolean remove(T obj) {
         for (int i = 0; i < size; i++) {
             if (obj.equals(array[i])) {
                 remove(i);
@@ -116,7 +116,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public void add(int index, Object item) {
+    public void add(int index, T item) {
         if ((index < 0) || (index > size)) {
             throw new IndexOutOfBoundsException();
         }
@@ -131,16 +131,16 @@ public class ArrayList implements List {
     }
 
     @Override
-    public Object get(int index) {
+    public T get(int index) {
         if (isIndex(index)) {
-            return array[index];
+            return (T) array[index];
         } else {
             return null;
         }
     }
 
     @Override
-    public int indexOf(Object obj) {
+    public int indexOf(T obj) {
         for (int i = 0; i < size; i++) {
             if (obj.equals(array[i])) {
                 return i;
@@ -150,7 +150,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public int lastIndexOf(Object obj) {
+    public int lastIndexOf(T obj) {
         for (int i = size; i >= 0; i--) {
             if (obj.equals(array[i])) {
                 return i;
@@ -160,7 +160,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public void replace(int index, Object item) {
+    public void replace(int index, T item) {
         if ((index < 0) || (index >= size)) {
             throw new IndexOutOfBoundsException();
         }

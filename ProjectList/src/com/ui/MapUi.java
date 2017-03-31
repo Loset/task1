@@ -16,7 +16,7 @@ public class MapUi {
 
     public void printMenu() {
         System.out.println("1 - Добавить строковый элемент");
-        System.out.println("2 - Удалить строковый элемент");
+        System.out.println("2 - Удалить элемент");
         System.out.println("3 - Определить содержится ли элемент в коллекции");
         System.out.println("4 - Вывести элементы коллекции");
         System.out.println("5 - Выход");
@@ -26,17 +26,21 @@ public class MapUi {
         map.put(key, item);
     }
 
-    public void delete(int index) {
+    public void delete(String index) {
         map.remove(index);
     }
 
     public void find(Object key) {
-        map.containsKey(key);
+        if (map.containsKey(key)) {
+            System.out.println("Содержится");
+        } else {
+            System.out.println("Не содержится");
+        }
     }
 
     public void print() {
         for (Object o : map.keySet()) {
-            System.out.println(o);
+            System.out.println("Ключ: " + o + ", Значение: " + map.get(o));
         }
     }
 
@@ -52,12 +56,11 @@ public class MapUi {
                 System.out.println("Введите значение");
                 String item = in.nextLine();
                 add(key, item);
-                in.nextLine();
             } else if (number == 2) {
                 System.out.println("Введите ключ");
-                delete(in.nextInt());
+                delete(in.nextLine());
             } else if (number == 3) {
-                System.out.println("Введите строку");
+                System.out.println("Введите ключ");
                 find(in.nextLine());
             } else if (number == 4) {
                 print();

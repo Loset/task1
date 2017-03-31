@@ -1,13 +1,13 @@
 package com.collection;
 
-public interface Collection extends java.lang.Iterable {
-    void add(Object item);
+public interface Collection<T> extends java.lang.Iterable<T> {
+    void add(T item);
 
     void clear();
 
     boolean isEmpty();
 
-    boolean remove(Object obj);
+    boolean remove(T obj);
 
     int size();
 }

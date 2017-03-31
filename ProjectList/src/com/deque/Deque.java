@@ -2,20 +2,20 @@ package com.deque;
 
 import com.collection.Collection;
 
-public interface Deque extends Collection{
-    void addFirst(Object item);
+public interface Deque<T> extends Collection<T> {
+    void addFirst(T item);
 
-    void addLast(Object item);
+    void addLast(T item);
 
     void removeFirst();
 
     void removeLast();
 
-    Object getFirst();
+    T getFirst();
 
-    Object getLast();
+    T getLast();
 
-    Object pollFirst();
+    T pollFirst();
 
-    Object pollLast();
+    T pollLast();
 }

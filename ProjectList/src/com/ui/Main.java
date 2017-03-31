@@ -1,6 +1,8 @@
 package com.ui;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 /**
@@ -8,7 +10,7 @@ import java.util.TreeSet;
  */
 public class Main {
     public static void main(String[] args) {
-        UserInterface ui = new SimpleUserInterface(new TreeSet());
+        MapUi ui = new MapUi(new TreeMap());
         ui.show();
     }
 }
